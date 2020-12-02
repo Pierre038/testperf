@@ -1,0 +1,44 @@
+
+
+.list-item {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cell-wraper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.list-wrapper::after {
+  content: '';
+  display: inherit;
+  width: 100%;
+  border-top: 1px solid black;
+  margin-top: 0,5em;
+}
+
+p {
+  margin-left: 0,5em;
+}
+
+.image-name {
+  color: black;
+}
+
+.image-properties {
+  color: black;
+  line-height: 1.5em;
+}
+
+.trash:hover {
+  cursor: pointer;
+}
+
+.trash {
+  background-color: black;
+}

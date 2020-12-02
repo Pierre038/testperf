@@ -1,0 +1,9 @@
+<div class="drop-zone" libDragAndDrop [disabled]="disabled" (fileDropped)="choosenFilesDrop.emit($event)">
+  <p class="drop-guide">Faire glisser le ou les documents ici</p>
+  <p class="drop-choice">ou</p>
+  <div>
+    <input  #selectedFile type="file" id="selectedFile" [accept]="acceptedType" (change)="handleFileInput($event)" style="display: none;"/>
+    <button uiButton class="primary outline select-file-cta" [disabled]="disabled" (click)="selectedFile.click()" >Importer depuis votre ordinateur</button>
+  </div>
+</div>
+

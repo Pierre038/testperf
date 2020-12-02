@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "testperf"
+    }
+  },
+  "defaultProject": "testperf",
+  "cli": {
+    "analytics": false
+  }
 }

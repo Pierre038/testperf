@@ -1,0 +1,52 @@
+@import 'eer-variables';
+
+.eer-section-title {
+  text-align: center;
+  line-height: 1.25em;
+  margin-bottom: $eer-common-space-medium;
+  color: $eer-common-color-font-normal;
+  font-size: $eer-common-font-size-xl-large;
+  font-weight: $eer-common-weight-font-normal;
+  @media (max-width: $eer-common-desktop-min-width) {
+    font-size: $eer-common-font-size-large;
+    line-height: 1.33em;
+    font-weight: $eer-common-weight-font-bold;
+  }
+}
+
+.eer-form {
+  height: 100%;
+  position: relative;
+
+  &-input {
+    margin-top: $eer-common-space-medium;
+  }
+
+  &-radio {
+    display: inline-block;
+    margin-right: $eer-common-space-large;
+  }
+
+  .ui-button.eer-form-cta {
+    position: absolute;
+    bottom: $eer-common-space-medium;
+  }
+
+  &-error {
+    color: $eer-common-color-font-error;
+    font-size: $eer-common-font-size-small;
+    line-height: $eer-common-space-medium;
+  }
+
+  @media (max-height: 600px) {
+    .ui-button.eer-form-cta {
+      position: inherit;
+      bottom: 0;
+      margin-top: $eer-common-space-large;
+    }
+  }
+}
+
+.eer-no-break-words {
+  white-space: nowrap;
+}

@@ -1,0 +1,18 @@
+
+.drop-zone {
+  background-color: grey;
+  border: 2px dashed black;
+  border-radius: 4px;
+  width: 100%;
+  min-height: 13em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+
+
+.select-file-cta {
+  margin-right: 0;
+}

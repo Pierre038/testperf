@@ -1,0 +1,17 @@
+<div *ngFor="let file of imageControls" class="list-wrapper">
+  <div class="list-item">
+    <div class="cell-wraper">
+
+        <img  src="{{file.value.base64}}" width="32" height="32"
+          alt="preview">
+
+      <div>
+        <p class="image-name">{{file.value.file.name}} </p>
+        <p class="image-properties">{{file.value.file.type}} </p>
+        <p class="eer-form-error" *ngIf="!file.validity">{{file.messageError}}</p>
+      </div>
+    </div>
+    <div class="cell-wraper trash">
+    </div>
+  </div>
+</div>

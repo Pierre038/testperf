@@ -1,0 +1,11 @@
+
+<p>
+  <label for="selectedFile">select file </label>
+  <input #selectedFile type="file" id="selectedFile" [accept]="acceptedType" (change)="handleFileInput($event)" />
+</p>
+
+<p>
+  <label for="takePicture">camera </label>
+  <input #takePicture type="file" id="takePicture" [accept]="acceptedType" (change)="handleFileInput($event)"  capture="user"/>
+</p>
+

@@ -1,0 +1,27 @@
+<div class="eer-form">
+<p>
+  <label for="pdfSize">pdf max size </label>
+  <input id="pdfSize" type="number" value="{{ maxPdfSizeInput }}" (keyup)="keyEvent($event)"  />
+</p>
+
+  <app-drag-and-drop *ngIf="(isMobile$ | async) === false" [disabled]="disableAddImage"
+    (choosenFilesDrop)="onfileSelected($event)">
+  </app-drag-and-drop>
+  <div *ngIf="impossibleAction" class="error"> {{impossibleActionMessage}}</div>
+
+  <app-image-list *ngIf="imageControls.length > 0" [imageControls]="imageControls" (adjustedImageList)="onImageDeleted($event)">
+  </app-image-list>
+
+  <app-mobile-file-pick *ngIf="(!disableAddImage && isMobile$ | async)"
+    (choosenFilesDrop)="onfileSelected($event)">
+  </app-mobile-file-pick>
+
+  <button uiButton class="primary full eer-form-cta" [disabled]="!imagesValidity"
+    (click)="onSubmit()">Continuer</button>
+
+    <p>
+      <span>time max du pdf: </span>{{maxPdfSizeInput}} <br>
+      <span> temps de génération du pdf en seconde </span>{{time$ | async}}
+    </p>
+
+</div>
