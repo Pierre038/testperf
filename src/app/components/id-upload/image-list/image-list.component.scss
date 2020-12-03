@@ -1,4 +1,6 @@
-
+.list-wrapper {
+  max-width: 200px;
+}
 
 .list-item {
   margin-top: 2em;
@@ -41,4 +43,10 @@ p {
 
 .trash {
   background-color: black;
+  color: white;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  line-height: 26px;
 }

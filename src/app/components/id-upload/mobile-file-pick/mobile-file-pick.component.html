@@ -1,7 +1,7 @@
 
 <p>
   <label for="selectedFile">select file </label>
-  <input #selectedFile type="file" id="selectedFile" [accept]="acceptedType" (change)="handleFileInput($event)" />
+  <input #selectedFile type="file" id="selectedFile" [accept]="acceptedType" (change)="handleFileInput($event)" multiple/>
 </p>
 
 <p>
