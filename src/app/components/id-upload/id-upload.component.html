@@ -1,11 +1,15 @@
 <div class="eer-form">
 <p>
-  <label for="pdfSize">pdf max size (en Mo) </label>
+  <label for="pdfSize">pdf max size (en Mo, defaut 4) </label>
   <input id="pdfSize" type="number" value="{{ maxPdfSizeInput }}" (keyup)="keyEvent($event)"  />
 </p>
 <p>
   <label for="maxiteration">nb max d'iteration par resize (defaut 10) </label>
   <input id="maxiteration" type="number" value="{{ maxIterationNumber }}" (keyup)="keyEvent2($event)"  />
+</p>
+<p>
+  <label for="initialQuality">fraction de la qualité initiale (defaut 1) </label>
+  <input id="initialQuality" type="number" value="{{ initialQuality }}" (keyup)="keyEvent3($event)"  />
 </p>
 
   <app-drag-and-drop *ngIf="(isMobile$ | async) === false" [disabled]="disableAddImage"

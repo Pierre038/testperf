@@ -11,6 +11,7 @@ export class ImageProcessingService {
   public  sizeMax = 4000000;
   private readonly defaultWidth = 200;
   public maxIteration = 10;
+  public initialQuality = 1;
 
   constructor() {}
 
@@ -187,7 +188,7 @@ export class ImageProcessingService {
     const bigImageSize = biggestImage.file.size;
     const maxSizeMb = bigImageSize > sizeLimit ? sizeLimit : bigImageSize / 2;
 
-    return this.compress(biggestImage, maxSizeMb, this.maxIteration).pipe(
+    return this.compress(biggestImage, maxSizeMb, this.maxIteration, this.initialQuality).pipe(
       map((compressedImage: Image) =>
         images.map((img) =>
           img.file.name === biggestImage.file.name ? compressedImage : img
@@ -200,9 +201,9 @@ export class ImageProcessingService {
    * Réduction d'image à l'aide de la lib browser-image-compression.
    * @param image l'image à compresser
    */
-  private compress(image: Image, maxSizeMB: number, maxIteration: number): Observable<Image> {
+  private compress(image: Image, maxSizeMB: number, maxIteration: number, initialQuality): Observable<Image> {
     return from(
-      imageCompression(image.file, { maxSizeMB, useWebWorker: true, maxIteration })
+      imageCompression(image.file, { maxSizeMB, useWebWorker: true, maxIteration, initialQuality })
     ).pipe(
       map((result: Blob) => {
         image.file = result as File;
