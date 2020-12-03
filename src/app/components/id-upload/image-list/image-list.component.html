@@ -11,7 +11,8 @@
         <p class="eer-form-error" *ngIf="!file.validity">{{file.messageError}}</p>
       </div>
     </div>
-    <div class="cell-wraper trash">
+    <div class="cell-wraper" (click)="deleteImage(file.value.file.name)">
+      <span class="trash">X</span>
     </div>
   </div>
 </div>
