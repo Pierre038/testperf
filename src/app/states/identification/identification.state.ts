@@ -88,7 +88,7 @@ export class IdentificationState {
   }
   @Selector()
   public static getEndTime(state: IdentificationStateModel): number {
-    return state.endTime;
+    return state.endTime  ;
   }
 
 

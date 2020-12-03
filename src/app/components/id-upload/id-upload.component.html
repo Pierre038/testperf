@@ -3,6 +3,10 @@
   <label for="pdfSize">pdf max size (en Mo) </label>
   <input id="pdfSize" type="number" value="{{ maxPdfSizeInput }}" (keyup)="keyEvent($event)"  />
 </p>
+<p>
+  <label for="maxiteration">nb max d'iteration par resize (defaut 10) </label>
+  <input id="maxiteration" type="number" value="{{ maxIterationNumber }}" (keyup)="keyEvent2($event)"  />
+</p>
 
   <app-drag-and-drop *ngIf="(isMobile$ | async) === false" [disabled]="disableAddImage"
     (choosenFilesDrop)="onfileSelected($event)">
