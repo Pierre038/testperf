@@ -1,6 +1,6 @@
 <div class="eer-form">
 <p>
-  <label for="pdfSize">pdf max size </label>
+  <label for="pdfSize">pdf max size (en Mo) </label>
   <input id="pdfSize" type="number" value="{{ maxPdfSizeInput }}" (keyup)="keyEvent($event)"  />
 </p>
 
@@ -20,7 +20,7 @@
     (click)="onSubmit()">Continuer</button>
 
     <p>
-      <span>time max du pdf: </span>{{maxPdfSizeInput}} <br>
+      <span>taille max du pdf: </span>{{maxPdfSizeInput}} <br>
       <span> temps de réduction des images en seconde </span>{{timeResize$ | async}} <br>
       <span> temps de génération du pdf en seconde </span>{{timePdf$ | async}} <br>
       <span> temps total en seconde </span>{{time$ | async}} <br>

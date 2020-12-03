@@ -157,7 +157,7 @@ export class IdentificationState {
   ): Observable<void> {
     patchState({ isLoading: true });
     console.log('start:', performance.now());
-    this.timeStart = -performance.now();
+    this.timeStart = performance.now();
     return this.imageService.imageProcessing(images, force).pipe(
       mergeMap((resizedImages: Image[]) => {
         return dispatch(
@@ -231,9 +231,9 @@ export class IdentificationState {
     const file = pdf.output('blob');
     console.log('fin', performance.now());
     this.timeEnd = performance.now();
-    patchState({ timeTotal: this.timeEnd - this.timeStart,
-      timePdf: this.timeEnd - this.timeResizingEnd,
-      timeResize: this.timeResizingEnd - this.timeStart,});
+    patchState({ timeTotal: (Math.round(this.timeEnd - this.timeStart)) / 1000,
+      timePdf: (Math.round(this.timeEnd - this.timeResizingEnd)) / 1000,
+      timeResize: (Math.round(this.timeResizingEnd - this.timeStart)) / 1000,});
     pdf.save('result.pdf'); // TODO: à supprimer
     return this.imageService.fileToHashCode(file).pipe(
       mergeMap((fileHashCode) => {
