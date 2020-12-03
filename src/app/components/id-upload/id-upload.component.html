@@ -21,7 +21,9 @@
 
     <p>
       <span>time max du pdf: </span>{{maxPdfSizeInput}} <br>
-      <span> temps de génération du pdf en seconde </span>{{time$ | async}}
+      <span> temps de réduction des images en seconde </span>{{timeResize$ | async}} <br>
+      <span> temps de génération du pdf en seconde </span>{{timePdf$ | async}} <br>
+      <span> temps total en seconde </span>{{time$ | async}} <br>
     </p>
 
 </div>
