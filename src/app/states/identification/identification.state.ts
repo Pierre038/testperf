@@ -16,7 +16,9 @@ export interface IdentificationStateModel {
   identificationContext: IdentificationContext | null;
   isLoading: boolean;
   error: Error | null;
-  time: number | null;
+  timeTotal: number | null;
+  timeResize: number | null;
+  timePdf: number | null;
 }
 
 export const initialState: IdentificationStateModel = {
@@ -26,7 +28,9 @@ export const initialState: IdentificationStateModel = {
   },
   isLoading: false,
   error: null,
-  time: null,
+  timeTotal: null,
+  timePdf: null,
+  timeResize: null,
 };
 
 @State<IdentificationStateModel>({
@@ -35,7 +39,9 @@ export const initialState: IdentificationStateModel = {
 })
 @Injectable()
 export class IdentificationState {
-  private time: number;
+  private timeStart: number;
+  private timeResizingEnd: number;
+  private timeEnd: number;
   constructor(
     private readonly imageService: ImageProcessingService,
     private readonly idService: IdentificationService
@@ -61,9 +67,18 @@ export class IdentificationState {
   }
 
   @Selector()
-  public static getTime(state: IdentificationStateModel): number {
-    return state.time;
+  public static getTotalTime(state: IdentificationStateModel): number {
+    return state.timeTotal;
   }
+  @Selector()
+  public static getResizeTime(state: IdentificationStateModel): number {
+    return state.timeResize;
+  }
+  @Selector()
+  public static getPdfTime(state: IdentificationStateModel): number {
+    return state.timePdf;
+  }
+
 
   @Selector()
   public static getError(state: IdentificationStateModel): Error | null {
@@ -141,8 +156,8 @@ export class IdentificationState {
     { images, force }: IdentificationActions.ImageProcessing
   ): Observable<void> {
     patchState({ isLoading: true });
-    console.log('start:',performance.now());
-    this.time = - performance.now();
+    console.log('start:', performance.now());
+    this.timeStart = -performance.now();
     return this.imageService.imageProcessing(images, force).pipe(
       mergeMap((resizedImages: Image[]) => {
         return dispatch(
@@ -172,6 +187,7 @@ export class IdentificationState {
         images,
       },
     });
+    this.timeResizingEnd = performance.now();
     return dispatch(new IdentificationActions.SetPdf(images));
   }
 
@@ -214,9 +230,10 @@ export class IdentificationState {
     const currentContext = getState().identificationContext;
     const file = pdf.output('blob');
     console.log('fin', performance.now());
-    this.time = (this.time + performance.now()) / 1000;
-    console.log('temps total:', this.time)
-    patchState({ time: this.time });
+    this.timeEnd = performance.now();
+    patchState({ timeTotal: this.timeEnd - this.timeStart,
+      timePdf: this.timeEnd - this.timeResizingEnd,
+      timeResize: this.timeResizingEnd - this.timeStart,});
     pdf.save('result.pdf'); // TODO: à supprimer
     return this.imageService.fileToHashCode(file).pipe(
       mergeMap((fileHashCode) => {

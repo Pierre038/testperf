@@ -59,8 +59,12 @@ export class IdUploadComponent implements OnInit, OnDestroy {
     return imageNumberValidity && imagesValidity;
   }
 
-  @Select(IdentificationState.getTime)
+  @Select(IdentificationState.getTotalTime)
   public time$: Observable<number>;
+  @Select(IdentificationState.getResizeTime)
+  public timeResize$: Observable<number>;
+  @Select(IdentificationState.getPdfTime)
+  public timePdf$: Observable<number>;
 
   public maxPdfSizeInput: number;
 
