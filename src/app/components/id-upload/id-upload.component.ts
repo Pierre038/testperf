@@ -71,6 +71,7 @@ export class IdUploadComponent implements OnInit, OnDestroy {
   public endTime$: Observable<number>;
 
   public maxPdfSizeInput: number;
+  public maxIterationNumber: number;
 
   constructor(
     private readonly store: Store,
@@ -83,9 +84,13 @@ export class IdUploadComponent implements OnInit, OnDestroy {
   }
 
   public keyEvent(event): void {
-    console.log('taille', event.target.value);
     this.maxPdfSizeInput = event.target.value;
     this.imageService.sizeMax = 1000000 * this.maxPdfSizeInput;
+  }
+
+  public keyEvent2(event): void {
+    this.maxIterationNumber = event.target.value;
+    this.imageService.maxIteration = this.maxIterationNumber;
   }
 
   public onSubmit(): void {
