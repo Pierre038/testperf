@@ -19,6 +19,8 @@ export interface IdentificationStateModel {
   timeTotal: number | null;
   timeResize: number | null;
   timePdf: number | null;
+  startTime: number | null;
+  endTime: number | null;
 }
 
 export const initialState: IdentificationStateModel = {
@@ -31,6 +33,8 @@ export const initialState: IdentificationStateModel = {
   timeTotal: null,
   timePdf: null,
   timeResize: null,
+  startTime: null,
+  endTime:null,
 };
 
 @State<IdentificationStateModel>({
@@ -77,6 +81,14 @@ export class IdentificationState {
   @Selector()
   public static getPdfTime(state: IdentificationStateModel): number {
     return state.timePdf;
+  }
+  @Selector()
+  public static getStartTime(state: IdentificationStateModel): number {
+    return state.startTime;
+  }
+  @Selector()
+  public static getEndTime(state: IdentificationStateModel): number {
+    return state.endTime;
   }
 
 
@@ -231,7 +243,10 @@ export class IdentificationState {
     const file = pdf.output('blob');
     console.log('fin', performance.now());
     this.timeEnd = performance.now();
-    patchState({ timeTotal: (Math.round(this.timeEnd - this.timeStart)) / 1000,
+    patchState({
+      startTime: this.timeStart,
+      endTime: this.timeEnd,
+      timeTotal: (Math.round(this.timeEnd - this.timeStart)) / 1000,
       timePdf: (Math.round(this.timeEnd - this.timeResizingEnd)) / 1000,
       timeResize: (Math.round(this.timeResizingEnd - this.timeStart)) / 1000,});
     pdf.save('result.pdf'); // TODO: à supprimer
