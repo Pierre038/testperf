@@ -65,6 +65,10 @@ export class IdUploadComponent implements OnInit, OnDestroy {
   public timeResize$: Observable<number>;
   @Select(IdentificationState.getPdfTime)
   public timePdf$: Observable<number>;
+  @Select(IdentificationState.getStartTime)
+  public startTime$: Observable<number>;
+  @Select(IdentificationState.getEndTime)
+  public endTime$: Observable<number>;
 
   public maxPdfSizeInput: number;
 
