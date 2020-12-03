@@ -7,7 +7,7 @@
 
       <div>
         <p class="image-name">{{file.value.file.name}} </p>
-        <p class="image-properties">{{file.value.file.type}} </p>
+        <p class="image-properties">{{file.value.file.size / 1000000}} Mo </p>
         <p class="eer-form-error" *ngIf="!file.validity">{{file.messageError}}</p>
       </div>
     </div>
