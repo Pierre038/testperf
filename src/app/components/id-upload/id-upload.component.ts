@@ -73,6 +73,7 @@ export class IdUploadComponent implements OnInit, OnDestroy {
   public maxPdfSizeInput: number;
   public maxIterationNumber: number;
   public initialQuality: number;
+  public maxWidthOrHeight: number;
 
   constructor(
     private readonly store: Store,
@@ -95,7 +96,11 @@ export class IdUploadComponent implements OnInit, OnDestroy {
   }
   public keyEvent3(event): void {
     this.initialQuality = event.target.value;
-    this.imageService.maxIteration = this.initialQuality;
+    this.imageService.initialQuality = this.initialQuality;
+  }
+  public keyEvent4(event): void {
+    this.maxWidthOrHeight = event.target.value;
+    this.imageService.maxWidthOrHeight = this.maxWidthOrHeight;
   }
 
   public onSubmit(): void {

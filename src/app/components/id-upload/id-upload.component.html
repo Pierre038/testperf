@@ -4,6 +4,11 @@
   <input id="pdfSize" type="number" value="{{ maxPdfSizeInput }}" (keyup)="keyEvent($event)"  />
 </p>
 <p>
+  <label for="maxWidthOrHeight">nb pixel max pour la hauteur et la largeur defaut 512 </label>
+  <input id="maxWidthOrHeight" type="number" value="{{ maxWidthOrHeight }}" (keyup)="keyEvent4($event)"  />
+</p>
+
+<p>
   <label for="maxiteration">nb max d'iteration par resize (defaut 10) </label>
   <input id="maxiteration" type="number" value="{{ maxIterationNumber }}" (keyup)="keyEvent2($event)"  />
 </p>
