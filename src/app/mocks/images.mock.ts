@@ -44,12 +44,5 @@ export const getRandomInt = (min, max) => {
 };
 
 export const settingMockImage = () => {
-  Object.defineProperty(HTMLImageElement.prototype, 'naturalHeight', { get: () => 1024 });
-  Object.defineProperty(HTMLImageElement.prototype, 'naturalWidth', { get: () => 1024 });
-  Object.defineProperty(global.Image.prototype, 'src', {
-    // tslint:disable-next-line: typedef
-    set(src) {
-      setTimeout(() => this.onload());
-    },
-  });
+
 };

@@ -1,5 +1,5 @@
 import { ImageProcessingService } from './../../services/image-processing.service';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Select, Store } from 'ngxs';
 import { Observable, of, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -10,6 +10,7 @@ import {
   acceptedTypeImage,
   errorMessages,
   ImageControl,
+  inputAcceptedTypeImage,
   maxPdfSize,
   maxPdfSizeDisplay,
   maxTotalImageSizeDisplay,
@@ -25,6 +26,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IdUploadComponent implements OnInit, OnDestroy {
+  @Input() public hidden = false;
   private idType: IdentificationType;
   public title: string;
   public idGuidePhrase: string;

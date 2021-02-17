@@ -1,3 +1,5 @@
+import { CaptureComponent } from './../capture/capture.component';
+import { CaptureModule } from './../capture/capture.module';
 import { ImageProcessingService } from './../../services/image-processing.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -11,10 +13,11 @@ import { ImageListComponent } from './image-list/image-list.component';
 import { MobileFilePickComponent } from './mobile-file-pick/mobile-file-pick.component';
 
 @NgModule({
-  declarations: [IdUploadComponent, DragAndDropComponent, ImageListComponent, MobileFilePickComponent],
+  declarations: [IdUploadComponent, ImageListComponent, MobileFilePickComponent, DragAndDropComponent],
   exports: [IdUploadComponent],
   providers: [IdentificationService, EdeMapper, ImageProcessingService],
   imports: [
+    CaptureModule,
     CommonModule,
     ReactiveFormsModule,
     CommonDirectivesModule,
