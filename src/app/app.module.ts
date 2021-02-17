@@ -10,10 +10,12 @@ import { IdentificationState } from './states/identification/identification.stat
 import { UserService } from './services/user.service';
 import { UserMapper } from './mappers/user.mapper';
 import { HttpClientModule } from '@angular/common/http';
+import { HiddenCaptureComponent } from './components/hidden-capture/hidden-capture.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HiddenCaptureComponent,
   ],
   imports: [
     BrowserModule,
